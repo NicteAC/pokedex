@@ -1,13 +1,13 @@
 <template>
   <v-footer padless>
     <v-col cols="6">
-      <v-btn color="red" rounded>
+      <v-btn color="red" rounded @click="$router.push('/list')">
         <v-icon left> mdi-format-list-bulleted-square </v-icon>
         All</v-btn
       >
     </v-col>
     <v-col cols="6">
-      <v-btn rounded>
+      <v-btn @click="$router.push('/favorite')" rounded>
         <v-icon left> mdi-star </v-icon>
         Favorites</v-btn
       >

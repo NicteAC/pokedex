@@ -30,7 +30,7 @@
         <v-col cols="8" v-for="(poke, index) in allPokemon" :key="index">
           <v-card class="mx-5" @click="alert = !alert">
             {{ poke.name }}
-            <v-btn fab x-small>
+            <v-btn fab x-small @click="addFavorite">
               <v-icon> mdi-star </v-icon>
             </v-btn>
 
