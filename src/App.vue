@@ -17,5 +17,6 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Lato');
 body {
   font-family: "Lato", sans-serif;
+  background-color:#E5E5E5;
 }
 </style>

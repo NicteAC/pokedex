@@ -31,12 +31,11 @@ export default {
 
 <style lang="scss" scoped>
 .searchbar {
- height: 50px;
-width: 570px;
-left: 291px;
-top: 35px;
-border-radius: 5px;
-
-
+  margin-top: 30px;
+  height: 50px;
+  width: 570px;
+  left: 291px;
+  top: 35px;
+  border-radius: 5px;
 }
 </style>

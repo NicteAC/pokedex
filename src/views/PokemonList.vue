@@ -1,18 +1,26 @@
 <template>
   <div class="container">
-    <PokemonSearch :apiUrl="apiUrl" @setPokemonUrl="setPokemonUrl" />
-    <PokemonList
-      :imageUrl="imageUrl"
-      :apiUrl="apiUrl"
-      @setPokemonUrl="setPokemonUrl"
-    />
-    <PokemonDetail
-      v-if="showDetail"
-      :pokemonUrl="pokemonUrl"
-      :imageUrl="imageUrl"
-      @closeDetail="closeDetail"
-    />
-    <Footer />
+    <div class="container__component">
+      <PokemonSearch :apiUrl="apiUrl" @setPokemonUrl="setPokemonUrl" />
+    </div>
+    <div class="container__component">
+      <PokemonList
+        :imageUrl="imageUrl"
+        :apiUrl="apiUrl"
+        @setPokemonUrl="setPokemonUrl"
+      />
+    </div>
+    <div class="container__component">
+      <PokemonDetail
+        v-if="showDetail"
+        :pokemonUrl="pokemonUrl"
+        :imageUrl="imageUrl"
+        @closeDetail="closeDetail"
+      />
+    </div>
+    <div class="container__component-footer">
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -52,13 +60,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.container__component {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: #e5e5e5;
-  font-size: 1rem;
-  font-weight: normal;
+
+ 
 }
+
 </style>

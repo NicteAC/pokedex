@@ -41,26 +41,32 @@
         <v-tbn class="close" fab @click="closeDetail">
           <v-icon>mdi-close </v-icon>
         </v-tbn>
-        <v-btn color="red" rounded>share to my friends</v-btn>
-        <v-btn fab x-small @click="addFavorite">
-          <v-icon> mdi-star </v-icon>
-        </v-btn>
+        <div class="buttons">
+          <button class="btn">Share to my friends</button>
+          <v-btn fab x-small @click="addFavorite">
+            <v-icon> mdi-star </v-icon>
+          </v-btn>
+        </div>
       </v-card>
-      <h2 v-else>The pokemon was not found</h2>
+      <PokemonNotFound v-else />
     </div>
-    <i v-else class="fas fa-spinner fa-spin"></i>
   </div>
 </template>
 
 <script>
+import PokemonNotFound from "../components/PokemonNotFound.vue";
 import { mapActions } from "vuex";
 export default {
+  name: "PokemonDetail",
+  components: {
+    PokemonNotFound,
+  },
   props: ["pokemonUrl", "imageUrl"],
   data: () => {
     return {
       show: false,
       pokemon: {
-        name: ""
+        name: "",
       },
     };
   },
@@ -103,27 +109,37 @@ export default {
   top: 0;
   left: 0;
   padding: 90px 10px 10px;
-  width: calc(100% - 20px);
-  height: calc(100vh - 20px);
+  width: calc(100%);
+  height: calc(100vh);
   background: rgba($color: #000000, $alpha: 0.7);
 
   &-view {
+    height: 506px;
+    width: 570px;
+    left: 0px;
+    top: 0px;
+    border-radius: 5px;
+
     .poke-img {
       display: flex;
       justify-content: center;
       position: absolute;
-      top: 30px;
+      top: 20px;
       width: 180px;
       height: 180px;
+      left: 194px;
+    }
+    .bg-img {
+      height: 220px;
     }
 
     &__data {
       display: flex;
       justify-content: flex-start;
-      align-items: center;
+      align-items: stretch;
       flex-direction: column;
       width: 100%;
-      margin-bottom: 40px;
+      margin: 7px 0px 40px 30px;
 
       &__info {
         font-weight: 500;
@@ -141,7 +157,24 @@ export default {
         }
       }
     }
-
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+    .btn {
+      color: white;
+      background-color: #f22539;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      height: 44px;
+      border-radius: 60px;
+      width: 195px;
+      height: 44px;
+      padding: 11px, 20px, 11px, 20px;
+      margin-bottom: 20px;
+    }
     .close {
       position: absolute;
       width: 26px;
@@ -152,6 +185,11 @@ export default {
       background-color: #ffffff;
       cursor: pointer;
     }
+  }
+}
+@media only screen and (max-width: 601px) {
+  .container {
+    width: 50% !important;
   }
 }
 </style>

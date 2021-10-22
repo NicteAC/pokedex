@@ -1,14 +1,16 @@
 <template>
   <div class="list">
-    <article
+    <v-card
+      class="card my-5"
       v-for="(pokemon, index) in pokemons"
       :key="'poke' + index"
       @click="setPokemonUrl(pokemon.url)"
     >
-      <p>{{ pokemon.name }}</p>
-    </article>
-    <div id="scroll-trigger" ref="infinitescrolltrigger">
-    </div>
+      <p class="py-5 pl-5">{{ pokemon.name }}</p>
+      <v-btn class="btn-star" fab x-small>
+        <v-icon> mdi-star </v-icon>
+      </v-btn>
+    </v-card>
   </div>
 </template>
 
@@ -45,17 +47,7 @@ export default {
           console.log(error);
         });
     },
-    scrollTrigger() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.intersectionRatio > 0 && this.nextUrl) {
-            this.next();
-          }
-        });
-      });
 
-      observer.observe(this.$refs.infinitescrolltrigger);
-    },
     next() {
       this.currentUrl = this.nextUrl;
       this.fetchData();
@@ -68,36 +60,29 @@ export default {
     this.currentUrl = this.apiUrl;
     this.fetchData();
   },
-  mounted() {
-    this.scrollTrigger();
-  },
 };
 </script>
 
 <style lang="scss" scoped>
-article {
-  background-color: white;
+.card {
+  display: flex;
+  justify-content: space-between;
   text-align: start;
+  background-color: white;
   text-transform: capitalize;
+  height: 60px;
+  width: 570px;
   border-radius: 5px;
   cursor: pointer;
+  .btn-star {
+    margin: auto 10px auto;
+  }
   p {
-    margin: 10px;
     height: 60px;
     width: 570px;
     font-size: 22px;
     border-radius: 5px;
   }
-}
-
-#scroll-trigger {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 150px;
-  font-size: 2rem;
-  color: #efefef;
 }
 </style>
 
