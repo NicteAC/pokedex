@@ -1,19 +1,18 @@
-# pokedex
+# Prueba Pokeguia-Global66
 
-## Project setup
+## Pokedex realizado con 
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
+Vue.js y Vuetify
 ```
 
-### Compiles and minifies for production
+### Api utilizada
 ```
-yarn build
+https://pokeapi.co/
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Imagenes obtenidas desde
+```
+https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/
+```
+
+#### By Nicte
