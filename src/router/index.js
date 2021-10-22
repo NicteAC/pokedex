@@ -11,14 +11,14 @@ const routes = [
     component: () => import('@/views/Home.vue'),
   },
   {
-    path: "/list",
-    name: "List",
-    component: () => import('@/views/List.vue'),
-  },
-  {
     path: "/favorite",
     name: "FavoriteList",
     component: () => import('@/views/FavoriteList.vue'),
+  },
+  {
+    path: "/list",
+    name: "list",
+    component: () => import('@/views/PokemonList.vue'),
   },
   {
     path: "*",
