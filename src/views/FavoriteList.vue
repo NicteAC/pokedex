@@ -1,7 +1,7 @@
 <template>
   <div>
     <PokemonSearch :apiUrl="apiUrl" @setPokemonUrl="setPokemonUrl" />
-    <Favorite />
+    <Favorite :imageUrl="imageUrl" />
     <Footer />
   </div>
 </template>

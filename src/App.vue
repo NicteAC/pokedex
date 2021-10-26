@@ -5,12 +5,19 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
   name: "App",
 
   data: () => ({
     //
   }),
+      methods:{
+      ...mapActions(['cargarLocalStorage'])
+    },
+    created(){
+      this.cargarLocalStorage()
+    }
 };
 </script>
 <style>

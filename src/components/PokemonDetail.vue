@@ -28,19 +28,21 @@
             </p>
           </div>
           <div class="detail-view__info">
-            <p
-              class="left"
-              v-for="(value, index) in pokemon.types"
-              :key="'value' + index"
-            >
+            <p>
               <strong> Types: </strong>
-              {{ value.type.name }}
+              <span
+                class="left"
+                v-for="(value, index) in pokemon.types"
+                :key="'value' + index"
+              >
+                {{ value.type.name }}
+              </span>
             </p>
           </div>
         </div>
-        <v-tbn class="close" fab @click="closeDetail">
+        <v-btn class="close" fab @click="closeDetail">
           <v-icon>mdi-close </v-icon>
-        </v-tbn>
+        </v-btn>
         <div class="buttons">
           <button class="btn">Share to my friends</button>
           <v-btn fab x-small @click="addFavorite">
@@ -55,26 +57,32 @@
 
 <script>
 import PokemonNotFound from "../components/PokemonNotFound.vue";
-import { mapActions } from "vuex";
+import { mapActions, } from "vuex";
 export default {
   name: "PokemonDetail",
   components: {
     PokemonNotFound,
   },
   props: ["pokemonUrl", "imageUrl"],
-  data: () => {
+  data() {
     return {
       show: false,
-      pokemon: {
-        name: "",
-      },
+      favoritos: [],
     };
   },
   methods: {
     ...mapActions(["add_Favorite"]),
     addFavorite() {
-      const { pokemon } = this;
-      this.add_Favorite(pokemon);
+      this.favoritos.push(
+        {
+          name: this.pokemon.name,
+          weight: this.pokemon.weight,
+          height: this.pokemon.height,
+          types: this.pokemon.types,
+          id: this.pokemon.id
+        }
+      );
+      localStorage.setItem("favoritos", JSON.stringify(this.favoritos))
     },
     fetchData() {
       let req = new Request(this.pokemonUrl);
@@ -93,9 +101,14 @@ export default {
     closeDetail() {
       this.$emit("closeDetail");
     },
+    share() {},
   },
   created() {
     this.fetchData();
+    let data = localStorage.getItem("favoritos");
+    if(data !=null){
+      this.favoritos = JSON.parse(data);
+    }
   },
 };
 </script>
